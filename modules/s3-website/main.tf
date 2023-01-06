@@ -25,3 +25,12 @@ resource "aws_s3_bucket_object" "error" {
   etag         = "${md5(file("html/error.html"))}"
   acl          = "public-read"
 }
+
+resource "aws_s3_bucket_object" "css" {
+  bucket       = "cloudpals-bucket"
+  key          = "style.css"
+  source       = "html/style.css"
+  content_type = "text/html"
+  etag         = "${md5(file("html/style.css"))}"
+  acl          = "public-read"
+}
