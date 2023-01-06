@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "static_site" {
-  bucket = "${var.bucket_name}"
+  bucket = "cloudpals-bucket"
   acl    = "public-read"
 
   website {
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "static_site" {
 }
 
 resource "aws_s3_bucket_object" "index" {
-  bucket       = "${aws_s3_bucket.static_site.bucket}"
+  bucket       = "cloudpals-bucket"
   key          = "index.html"
   source       = "html/index.html"
   content_type = "text/html"
@@ -18,7 +18,7 @@ resource "aws_s3_bucket_object" "index" {
 }
 
 resource "aws_s3_bucket_object" "error" {
-  bucket       = "${aws_s3_bucket.static_site.bucket}"
+  bucket       = "cloudpals-bucket"
   key          = "error.html"
   source       = "html/error.html"
   content_type = "text/html"
